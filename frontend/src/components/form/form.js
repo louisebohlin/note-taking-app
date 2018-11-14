@@ -1,30 +1,42 @@
 import React from "react"
+import "./form.scss"
 
 class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      newNote: ""
+      title: "",
+      body: ""
     }
   }
     handleChange = event => {
       this.setState({
-        newNote: event.target.value
+        title: event.target.value
+      })
+    }
+
+    handleBodyChange = event => {
+      this.setState({
+        body: event.target.value
       })
     }
     handleSubmit = event => {
       event.preventDefault()
-      this.props.onSubmit(this.state.newNote)
+      this.props.onSubmit(this.state.title, this.state.body)
     }
     render() {
       return (
-        <div>
+        <div className="form">
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
-              placeholder="New Note"
-              value={this.state.newNote}
+              placeholder="Note Title"
+              value={this.state.title}
               onChange={this.handleChange} />
+            <textarea
+              placeholder="Note Content"
+              onChange={this.handleBodyChange}>{this.state.body}
+            </textarea>
             <button>Add</button>
           </form>
         </div>

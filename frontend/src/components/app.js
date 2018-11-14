@@ -18,11 +18,12 @@ class App extends React.Component {
     }
   }
 
-  handleNewItem = newNote => {
+  handleNewItem = (title, body) => {
     const Notes = this.state.items
     Notes.push({
       id: Date.now(),
-      text: newNote
+      title,
+      body
     })
     localStorage.setItem("userNotes", JSON.stringify(Notes))
     this.setState({
@@ -49,7 +50,8 @@ class App extends React.Component {
             <Note
               index={index}
               key={item.id}
-              text={item.text}
+              title={item.title}
+              body={item.body}
               handleRemove={this.handleRemove} />
           ))}
         </div>

@@ -50,15 +50,15 @@ class App extends React.Component {
     const selectedNote = this.state.items.find(note => note.id === this.state.selectedItemID)
     return (
       <div className="container">
-      <ul className="noteslist">
+        <ul className="noteslist">
           {this.state.items.map((item, index) => (
             <li onClick={() => this.handleItemClick(item.id)}>{item.title}</li>
-        ))}
-      </ul>
+          ))}
+        </ul>
         <div className="notes-form">
           <h1>My notes</h1>
           <Form onSubmit={this.handleNewItem} />
-          {selectedNote && <Note id={selectedNote.id} title={selectedNote.title} body={selectedNote.body} />}
+          {selectedNote && <Note id={selectedNote.id} title={selectedNote.title} body={selectedNote.body} handleRemove={this.handleRemove} />}
         </div>
       </div>
     )

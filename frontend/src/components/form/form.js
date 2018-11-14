@@ -20,6 +20,7 @@ class Form extends React.Component {
         body: event.target.value
       })
     }
+
     handleSubmit = event => {
       event.preventDefault()
       this.props.onSubmit(this.state.title, this.state.body)
@@ -30,11 +31,11 @@ class Form extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <input
               type="text"
-              placeholder="Note Title"
+              placeholder="Title"
               value={this.state.title}
               onChange={this.handleChange} />
             <textarea
-              placeholder="Note Content"
+              placeholder="Content"
               onChange={this.handleBodyChange}>{this.state.body}
             </textarea>
             <button>Add</button>

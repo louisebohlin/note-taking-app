@@ -1,7 +1,7 @@
 import React from "react"
 import Note from "./note/note.js"
 import Form from "./form/form.js"
-import "./../index.scss"
+import ".././index.scss"
 
 class App extends React.Component {
 
@@ -32,28 +32,33 @@ class App extends React.Component {
   }
 
   handleRemove = index => {
-    const Notes = this.state.items
-    Notes.splice(index, 1)
+    const notes = this.state.items
+    notes.splice(index, 1)
     this.setState({
-      items: Notes
+      items: notes
     })
-    localStorage.setItem("userNotes", JSON.stringify(Notes))
+    localStorage.setItem("userNotes", JSON.stringify(notes))
+  }
+
+  handleItemClick = id => {
+    this.setState({
+      selectedItemID: id
+    })
   }
 
   render() {
+    const selectedNote = this.state.items.find(note => note.id === this.state.selectedItemID)
     return (
       <div className="container">
+      <ul className="noteslist">
+          {this.state.items.map((item, index) => (
+            <li onClick={() => this.handleItemClick(item.id)}>{item.title}</li>
+        ))}
+      </ul>
         <div className="notes-form">
           <h1>My notes</h1>
           <Form onSubmit={this.handleNewItem} />
-          {this.state.items.map((item, index) => (
-            <Note
-              index={index}
-              key={item.id}
-              title={item.title}
-              body={item.body}
-              handleRemove={this.handleRemove} />
-          ))}
+          {selectedNote && <Note id={selectedNote.id} title={selectedNote.title} body={selectedNote.body} />}
         </div>
       </div>
     )

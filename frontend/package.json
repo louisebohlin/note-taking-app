@@ -8,7 +8,7 @@
     "node-sass": "^4.10.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.16"
+    "react-scripts": "2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -19,5 +19,11 @@
   "description": "This app has been generated using `create-react-app`, then cleaned up a little so we have a project with just the elements we need to get started.",
   "main": "index.js",
   "author": "Louise",
-  "license": "ISC"
+  "license": "ISC",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

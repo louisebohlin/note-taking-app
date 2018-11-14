@@ -4,7 +4,7 @@ class Note extends React.Component {
 
     handleRemoveNote = e => {
       e.preventDefault()
-      this.props.handleRemove(this.props.index)
+      this.props.handleRemove(this.props.id)
     }
     render() {
       return (
